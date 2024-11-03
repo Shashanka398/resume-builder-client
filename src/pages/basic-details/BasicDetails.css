@@ -1,4 +1,15 @@
 .basic-details{
     width: 100%;
     margin: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.textField{
+    border:"1px solid white"
 }

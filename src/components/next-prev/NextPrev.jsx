@@ -24,7 +24,7 @@ const NextPrev = ({ submitForm }) => {
   };
 
   return (
-    <div>
+    <div className='main'>
       <Button 
         variant="contained" 
         onClick={handlePrevious} 

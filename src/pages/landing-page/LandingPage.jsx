@@ -5,7 +5,8 @@ import NextPrev from "../../components/next-prev/NextPrev";
 import BasicDetails from "../basic-details/BasicDetails";
 import "./LandingPage.css";
 import { useLocation } from "react-router-dom";
-import EducationDetails from "../Educational-Details/EducationDetails";
+import EducationDetails from "../educational-details/EducationDetails";
+import ExperienceDetails from "../experience-details/ExperienceDetails"
 const LandingPage = () => {
   const currentTab = useLocation();
   const submit = () => {
@@ -13,13 +14,13 @@ const LandingPage = () => {
   };
   return (
     <div className="main">
-      <div className="top-nav">
+      {/* <div className="top-nav">
         <TopNav></TopNav>
-      </div>
+      </div> */}
       <div className="container">
-        <div className="left-nav">
+        {/* <div className="left-nav">
           <LeftNav></LeftNav>
-        </div>
+        </div> */}
 
         <div className="content">
           <div>
@@ -30,7 +31,8 @@ const LandingPage = () => {
               {currentTab.pathname=== '/education-details' && <EducationDetails/>}
             </div>
             <div>
-              {}
+                {currentTab.pathname=== '/experience-details' && <ExperienceDetails/>}
+              
             </div>
             <div>
               {}
