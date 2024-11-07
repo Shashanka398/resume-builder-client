@@ -12,6 +12,7 @@ const LandingPage = () => {
   const submit = () => {
     console.log("Submited");
   };
+  
   return (
     <div className="main">
       {/* <div className="top-nav">
@@ -32,7 +33,6 @@ const LandingPage = () => {
             </div>
             <div>
                 {currentTab.pathname=== '/experience-details' && <ExperienceDetails/>}
-              
             </div>
             <div>
               {}

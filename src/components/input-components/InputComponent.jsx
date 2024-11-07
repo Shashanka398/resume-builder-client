@@ -47,7 +47,7 @@ export const AutoComplete = ({name, label, type = "string", list,setList,data,op
   return (
     <Autocomplete
       options={options}
-      value={data.label}
+      value={data.label || "" }
       multiple={isMultiple}
     sx={{...style,"margin-top": '16px',}}
       onChange={(event, newValue) => {

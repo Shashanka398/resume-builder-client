@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {AutoComplete,TextInput} from "../../components/input-components/InputComponent"
 import Button from "@mui/material/Button";
 import { years } from "../../utils/pages";
 import DeleteIcon from '@mui/icons-material/Delete';
 import "./EducationDetails.css"
+import { useDispatch, useSelector } from "react-redux";
+import { storeEducationDetails } from '../../redux/slices/educationDetials.slice'; 
 
 const EducationDetails = () => {
   const [educationDetails, setEducationDetails] = useState([
     { degree: "", collageName: "", passout: "", grade: "", place: "" },
   ]);
-
+  const dispatch = useDispatch();
+  const storedData = useSelector((state) => state.educationDetails);
   const yearList = years(1900, new Date().getFullYear());
 
   const handleChange = (index, event) => {
@@ -28,6 +31,12 @@ const EducationDetails = () => {
     setEducationDetails(newEducationDetails);
   };
 
+  useEffect(() => {
+    if (Array.isArray(storedData.educationDetails)) {
+      setEducationDetails(storedData.educationDetails);
+    }
+  }, [storedData]);
+
   const handleAdd = () => {
     setEducationDetails([
       ...educationDetails,
@@ -40,11 +49,15 @@ const EducationDetails = () => {
     setEducationDetails(newEducationDetails);
   };
 
+  const handleSave=()=>{
+    dispatch(storeEducationDetails(educationDetails))
+  }
+
 
   return (
     <div>
       <h2>Education Details</h2>
-      {educationDetails.map((data, index) => (
+      {educationDetails?.map((data, index) => (
         <div key={index} className="container">
           <TextInput label="Degree" name="degree" handleChange={(event) => handleChange(index, event)} value={data.degree} />
           <TextInput label="College/University Name" name="collageName" handleChange={(event) => handleChange(index, event)} value={data.collageName} />
@@ -64,6 +77,9 @@ const EducationDetails = () => {
       ))}
       <Button variant="contained" onClick={handleAdd}>
         Add Education
+      </Button>
+      <Button variant="contained" onClick={handleSave}>
+        Save
       </Button>
     </div>
   );

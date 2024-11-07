@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { pages } from '../../utils/pages';
-
+import { useSelector,useDispatch } from "react-redux";
 const NextPrev = ({ submitForm }) => {
   const navigate = useNavigate();
   const location = useLocation();
